@@ -6,6 +6,7 @@ import Scene from './scene'
 import basicVert from '../shaders/basic.vert'
 import clearFrag from '../shaders/clear.frag'
 import reactFrag from '../shaders/react.frag'
+import psychedelicFrag from '../shaders/psychedelic.frag'
 import thresholdFrag from '../shaders/threshold.frag'
 
 // hot-reload fix
@@ -15,7 +16,10 @@ if (dg) location.reload()
 let settings = {
   feed: 0.037,
   kill: 0.06,
-  brushSize: 1
+  brushSize: 1,
+  threshold: 0.3,
+  timeMultiplier: 0,
+  renderer: 'threshold'
 }
 
 const gui = new dat.GUI({ load: presets })
@@ -23,6 +27,8 @@ gui.remember(settings)
 gui.add(settings, 'feed')
 gui.add(settings, 'kill')
 gui.add(settings, 'brushSize', 1, 100)
+gui.add(settings, 'renderer', ['threshold', 'psychedelic'])
+gui.add(settings, 'timeMultiplier', 0, 50)
 gui.add({ clear }, 'clear')
 
 const previousPower = function(x) {
@@ -34,9 +40,15 @@ const scene = new Scene(
   previousPower(document.body.clientHeight)
 )
 
-const clearProg = scene.createProgramInfo(basicVert, clearFrag)
-const thresholdProg = scene.createProgramInfo(basicVert, thresholdFrag)
-const reactProg = scene.createProgramInfo(basicVert, reactFrag)
+const shaders = {
+  clear: scene.createProgramInfo(basicVert, clearFrag),
+  react: scene.createProgramInfo(basicVert, reactFrag)
+}
+
+const renderers = {
+  threshold: scene.createProgramInfo(basicVert, thresholdFrag),
+  psychedelic: scene.createProgramInfo(basicVert, psychedelicFrag)
+}
 
 const scale = 1
 const [w, h] = [scene.width / scale, scene.height / scale]
@@ -44,6 +56,7 @@ const bufferA = scene.createBuffer(w, h)
 const bufferB = scene.createBuffer(w, h)
 
 let mouse = [w / 2, h / 2, 1]
+let start = Date.now()
 
 const mouseevent = e => {
   mouse[0] = e.offsetX / scale
@@ -57,7 +70,7 @@ scene.gl.canvas.addEventListener('mouseup', mouseevent)
 
 function clear() {
   scene.draw({
-    program: clearProg,
+    program: shaders.clear,
     output: bufferA
   })
 }
@@ -72,7 +85,7 @@ function render() {
     lastOutput = output
 
     scene.draw({
-      program: reactProg,
+      program: shaders.react,
       uniforms: {
         ...settings,
         mouse
@@ -85,9 +98,10 @@ function render() {
   }
 
   scene.draw({
-    program: thresholdProg,
+    program: renderers[settings.renderer],
     uniforms: {
-      threshold: 0.3
+      ...settings,
+      time: (Date.now() - start) / 1000
     },
     inputs: {
       texture: lastOutput
