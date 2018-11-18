@@ -14,10 +14,58 @@
         "kill": 0.062
       }
     },
+    "Fireflies": {
+      "0": {
+        "feed": 0.007,
+        "kill": 0.047
+      }
+    },
+    "Gliders": {
+      "0": {
+        "feed": 0.001,
+        "kill": 0.037
+      }
+    },
     "Holes": {
       "0": {
         "feed": 0.039,
         "kill": 0.058
+      }
+    },
+    "Mercury": {
+      "0": {
+        "feed": 0.026,
+        "kill": 0.05
+      }
+    },
+    "Raindrops": {
+      "0": {
+        "feed": 0.012,
+        "kill": 0.048
+      }
+    },
+    "Raindrops 2": {
+      "0": {
+        "feed": 0.012,
+        "kill": 0.053
+      }
+    },
+    "Raindrops 3": {
+      "0": {
+        "feed": 0.018,
+        "kill": 0.053
+      }
+    },
+    "Spirals": {
+      "0": {
+        "feed": 0.012,
+        "kill": 0.041
+      }
+    },
+    "Spirals 2": {
+      "0": {
+        "feed": 0.007,
+        "kill": 0.043
       }
     },
     "Shimmer": {
