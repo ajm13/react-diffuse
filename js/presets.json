@@ -58,7 +58,7 @@
     },
     "Spirals": {
       "0": {
-        "feed": 0.012,
+        "feed": 0.011,
         "kill": 0.041
       }
     },
@@ -77,19 +77,22 @@
     "Trippy 1": {
       "0": {
         "feed": 0.02,
-        "kill": 0.05
+        "kill": 0.05,
+        "renderer": "psychedelic"
       }
     },
     "Trippy 2": {
       "0": {
         "feed": 0.015,
-        "kill": 0.041
+        "kill": 0.041,
+        "renderer": "psychedelic"
       }
     },
     "Trippy 3": {
       "0": {
         "feed": 0.025,
-        "kill": 0.051
+        "kill": 0.051,
+        "renderer": "psychedelic"
       }
     }
   }
