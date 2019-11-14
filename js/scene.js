@@ -13,9 +13,9 @@ export default class Scene {
 
     this.width = width
     this.height = height
-    this.gl.canvas.width = this.width
-    this.gl.canvas.height = this.height
-    this.gl.viewport(0, 0, this.width, this.height)
+    this.gl.canvas.width = width
+    this.gl.canvas.height = height
+    this.gl.viewport(0, 0, width, height)
   }
 
   createBuffer(width, height) {
@@ -43,30 +43,23 @@ export default class Scene {
   }
 
   draw(spec) {
-    this.gl.useProgram(spec.program.program)
-
-    const uniforms = {}
-    if (spec.uniforms) {
-      Object.assign(uniforms, spec.uniforms)
-    }
-
-    if (spec.inputs) {
-      const inputs = {}
-      Object.keys(spec.inputs).map(key => {
-        inputs[key] = spec.inputs[key].attachments[0]
-      })
-      Object.assign(uniforms, inputs)
-    }
-
     let resolution = [this.width, this.height]
     if (spec.output) {
       resolution = [spec.output.width, spec.output.height]
     }
 
-    Object.assign(uniforms, {
-      resolution: resolution
-    })
+    const uniforms = { resolution }
+    if (spec.uniforms) {
+      Object.assign(uniforms, spec.uniforms)
+    }
 
+    if (spec.inputs) {
+      Object.keys(spec.inputs).map(key => {
+        uniforms[key] = spec.inputs[key].attachments[0]
+      })
+    }
+
+    this.gl.useProgram(spec.program.program)
     twgl.setUniforms(spec.program, uniforms)
 
     if (spec.output) {

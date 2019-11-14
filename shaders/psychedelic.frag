@@ -26,6 +26,7 @@ void main() {
     else if (h == 5.0) col = vec3(1.0, 0.0, x);
 
     col *= min(B * 20.0, 1.0);
+    col += vec3((1.0 - A) * pow(1.0 - B, 5.0));
 
     gl_FragColor = vec4(col, 1.0);
 }

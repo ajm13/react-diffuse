@@ -28,6 +28,7 @@ gui.add(settings, 'feed')
 gui.add(settings, 'kill')
 gui.add(settings, 'brushSize', 1, 100)
 gui.add(settings, 'renderer', ['threshold', 'psychedelic'])
+gui.add(settings, 'threshold', 0.01, 1)
 gui.add(settings, 'timeMultiplier', 0, 50)
 gui.add({ clear }, 'clear')
 
@@ -81,7 +82,7 @@ function render() {
 
   for (let i = 0; i < steps; i++) {
     const input = lastOutput
-    const output = lastOutput === bufferA ? bufferB : bufferA
+    const output = input === bufferA ? bufferB : bufferA
     lastOutput = output
 
     scene.draw({

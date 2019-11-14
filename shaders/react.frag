@@ -9,8 +9,8 @@ uniform float brushSize;
 uniform vec3 mouse;
 
 void main() {
-  vec2 p = gl_FragCoord.xy / resolution.xy;
-  vec2 uv = texture2D(texture, p).rg;
+  vec2 xy = gl_FragCoord.xy / resolution.xy;
+  vec2 AB = texture2D(texture, xy).rg;
 
   float dm = length(gl_FragCoord.xy - mouse.xy);
   if (mouse.z > 0.0 && dm < brushSize) {
@@ -22,26 +22,26 @@ void main() {
   float dy = 1.0 / resolution.y;
 
   vec2 neighbors =
-    0.05 * texture2D(texture, p + vec2(-dx, -dy)).rg +
-    0.20 * texture2D(texture, p + vec2(-dx, 0.0)).rg +
-    0.05 * texture2D(texture, p + vec2(-dx,  dy)).rg +
-    0.20 * texture2D(texture, p + vec2(0.0, -dy)).rg +
-    0.20 * texture2D(texture, p + vec2(0.0,  dy)).rg +
-    0.05 * texture2D(texture, p + vec2( dx, -dy)).rg +
-    0.20 * texture2D(texture, p + vec2( dx, 0.0)).rg +
-    0.05 * texture2D(texture, p + vec2( dx,  dy)).rg;
+    0.05 * texture2D(texture, xy + vec2(-dx, -dy)).rg +
+    0.20 * texture2D(texture, xy + vec2(-dx, 0.0)).rg +
+    0.05 * texture2D(texture, xy + vec2(-dx,  dy)).rg +
+    0.20 * texture2D(texture, xy + vec2(0.0, -dy)).rg +
+    0.20 * texture2D(texture, xy + vec2(0.0,  dy)).rg +
+    0.05 * texture2D(texture, xy + vec2( dx, -dy)).rg +
+    0.20 * texture2D(texture, xy + vec2( dx, 0.0)).rg +
+    0.05 * texture2D(texture, xy + vec2( dx,  dy)).rg;
 
-  vec2 lapl = neighbors - uv;
+  vec2 lapl = neighbors - AB;
 
-  float u = uv.r;
-  float v = uv.g;
-  float lu = lapl.r;
-  float lb = lapl.g;
+  float A = AB.r;
+  float B = AB.g;
+  float lA = lapl.r;
+  float lB = lapl.g;
 
-  float reaction = u * v * v;
+  float reaction = A * B * B;
 
-  float du = 1.0 * lu - reaction + feed * (1.0 - u);
-  float dv = 0.5 * lb + reaction - (kill + feed) * v;
+  float dA = 1.0 * lA - reaction + feed * (1.0 - A);
+  float dB = 0.5 * lB + reaction - (kill + feed) * B;
 
-  gl_FragColor = vec4(u + du, v + dv, 0.0, 1.0);
+  gl_FragColor = vec4(A + dA, B + dB, 0.0, 1.0);
 }
