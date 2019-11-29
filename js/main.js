@@ -19,6 +19,7 @@ let settings = {
   brushSize: 1,
   threshold: 0.3,
   timeMultiplier: 0,
+  renderSteps: 10,
   renderer: 'threshold'
 }
 
@@ -27,6 +28,7 @@ gui.remember(settings)
 gui.add(settings, 'feed')
 gui.add(settings, 'kill')
 gui.add(settings, 'brushSize', 1, 100)
+gui.add(settings, 'renderSteps', 1, 30)
 gui.add(settings, 'renderer', ['threshold', 'psychedelic'])
 gui.add(settings, 'threshold', 0.01, 1)
 gui.add(settings, 'timeMultiplier', 0, 50)
@@ -77,10 +79,8 @@ function clear() {
 }
 
 function render() {
-  const steps = 8
   let lastOutput = bufferA
-
-  for (let i = 0; i < steps; i++) {
+  for (let i = 0; i < settings.renderSteps; i++) {
     const input = lastOutput
     const output = input === bufferA ? bufferB : bufferA
     lastOutput = output
