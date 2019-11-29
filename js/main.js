@@ -57,6 +57,7 @@ const scale = 1
 const [w, h] = [scene.width / scale, scene.height / scale]
 const bufferA = scene.createBuffer(w, h)
 const bufferB = scene.createBuffer(w, h)
+let lastOutput = bufferA
 
 let mouse = [w / 2, h / 2, 1]
 let start = Date.now()
@@ -74,11 +75,10 @@ scene.gl.canvas.addEventListener('mouseup', mouseevent)
 function clear() {
   scene.draw({
     program: shaders.clear,
-    output: bufferA
+    output: lastOutput
   })
 }
 
-let lastOutput = bufferA
 function render() {
   for (let i = 0; i < settings.renderSteps; i++) {
     const input = lastOutput

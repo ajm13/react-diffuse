@@ -3,7 +3,10 @@ import * as twgl from 'twgl.js'
 export default class Scene {
   constructor(width, height) {
     const canvas = document.getElementById('canvas')
-    this.gl = twgl.getWebGLContext(canvas)
+    this.gl = twgl.getWebGLContext(canvas, {
+      alpha: false,
+      preserveDrawingBuffer: true
+    })
 
     this.bufferInfo = twgl.createBufferInfoFromArrays(this.gl, {
       position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0]
