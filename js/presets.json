@@ -94,6 +94,12 @@
         "kill": 0.051,
         "renderer": "psychedelic"
       }
+    },
+    "Vines": {
+      "0": {
+        "feed": 0.039,
+        "kill": 0.063
+      }
     }
   }
 }
