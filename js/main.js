@@ -78,8 +78,8 @@ function clear() {
   })
 }
 
+let lastOutput = bufferA
 function render() {
-  let lastOutput = bufferA
   for (let i = 0; i < settings.renderSteps; i++) {
     const input = lastOutput
     const output = input === bufferA ? bufferB : bufferA
