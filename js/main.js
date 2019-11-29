@@ -1,4 +1,5 @@
 import * as dat from 'dat.gui'
+import { saveAs } from 'file-saver'
 
 import presets from './presets.json'
 import Scene from './scene'
@@ -33,6 +34,7 @@ gui.add(settings, 'renderer', ['threshold', 'psychedelic'])
 gui.add(settings, 'threshold', 0.01, 1)
 gui.add(settings, 'timeMultiplier', 0, 50)
 gui.add({ clear }, 'clear')
+gui.add({ save }, 'save')
 
 const previousPower = function(x) {
   return Math.pow(2, Math.floor(Math.log2(x)))
@@ -71,6 +73,16 @@ const mouseevent = e => {
 scene.gl.canvas.addEventListener('mousemove', mouseevent)
 scene.gl.canvas.addEventListener('mousedown', mouseevent)
 scene.gl.canvas.addEventListener('mouseup', mouseevent)
+
+function save() {
+  scene.gl.canvas.toBlob(blob => {
+    const id = Array(5)
+      .fill()
+      .map(() => Math.floor(36 * Math.random()).toString(36))
+      .join('')
+    saveAs(blob, `rd-${id}.png`)
+  })
+}
 
 function clear() {
   scene.draw({
