@@ -32,6 +32,12 @@
         "kill": 0.058
       }
     },
+    "Hypnosis": {
+      "0": {
+        "feed": 0.02,
+        "kill": 0.045
+      }
+    },
     "Mercury": {
       "0": {
         "feed": 0.026,
@@ -56,6 +62,12 @@
         "kill": 0.053
       }
     },
+    "Shimmer": {
+      "0": {
+        "feed": 0.023,
+        "kill": 0.051
+      }
+    },
     "Spirals": {
       "0": {
         "feed": 0.011,
@@ -66,12 +78,6 @@
       "0": {
         "feed": 0.007,
         "kill": 0.043
-      }
-    },
-    "Shimmer": {
-      "0": {
-        "feed": 0.023,
-        "kill": 0.051
       }
     },
     "Trippy 1": {
@@ -93,6 +99,30 @@
         "feed": 0.025,
         "kill": 0.051,
         "renderer": "psychedelic"
+      }
+    },
+    "Trippy 4": {
+      "0": {
+        "feed": 0.034,
+        "kill": 0.056,
+        "renderer": "threshold",
+        "threshold": 0.4
+      }
+    },
+    "Trippy 5": {
+      "0": {
+        "feed": 0.034,
+        "kill": 0.0553,
+        "renderer": "threshold",
+        "threshold": 0.4
+      }
+    },
+    "Trippy 6": {
+      "0": {
+        "feed": 0.016,
+        "kill": 0.042,
+        "renderer": "threshold",
+        "threshold": 0.4
       }
     },
     "Vines": {
