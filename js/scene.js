@@ -28,7 +28,7 @@ export default class Scene {
         type: this.gl.FLOAT,
         min: this.gl.LINEAR,
         mag: this.gl.LINEAR,
-        wrap: this.gl.REPEAT
+        wrap: this.gl.CLAMP_TO_EDGE
       }
     ]
 

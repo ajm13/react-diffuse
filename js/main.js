@@ -36,10 +36,7 @@ const previousPower = function(x) {
   return Math.pow(2, Math.floor(Math.log2(x)))
 }
 
-const scene = new Scene(
-  previousPower(document.body.clientWidth),
-  previousPower(document.body.clientHeight)
-)
+const scene = new Scene(document.body.clientWidth, document.body.clientHeight)
 
 const shaders = {
   clear: scene.createProgramInfo(basicVert, clearFrag),
