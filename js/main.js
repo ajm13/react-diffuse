@@ -15,6 +15,11 @@ import thresholdFrag from '../shaders/threshold.frag'
 const dg = document.querySelector('.dg.main')
 if (dg) location.reload()
 
+window.gpuHack = document.createElement('canvas')
+window.gpuHackCtx = gpuHack.getContext('webgl', {
+  powerPreference: 'high-performance'
+})
+
 let settings = {
   feed: 0.037,
   kill: 0.06,
@@ -37,10 +42,6 @@ gui.add(settings, 'timeMultiplier', 0, 50)
 gui.add({ clear }, 'clear')
 gui.add({ seed }, 'seed')
 gui.add({ save }, 'save')
-
-const previousPower = function(x) {
-  return Math.pow(2, Math.floor(Math.log2(x)))
-}
 
 const scene = new Scene(document.body.clientWidth, document.body.clientHeight)
 
