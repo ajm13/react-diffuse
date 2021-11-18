@@ -32,15 +32,16 @@ let settings = {
 
 const gui = new dat.GUI({ load: presets })
 gui.remember(settings)
-gui.add(settings, 'feed')
-gui.add(settings, 'kill')
-gui.add(settings, 'brushSize', 1, 100)
-gui.add(settings, 'renderSteps', 1, 30)
+gui.add(settings, 'feed', 0, 100).name('feed rate')
+gui.add(settings, 'kill', 0, 100).name('kill rate')
+gui.add(settings, 'brushSize', 1, 100).name('brush size')
+gui.add(settings, 'renderSteps', 1, 100).name('render steps')
 gui.add(settings, 'renderer', ['threshold', 'psychedelic'])
 gui.add(settings, 'threshold', 0.01, 1)
-gui.add(settings, 'timeMultiplier', 0, 50)
+gui.add(settings, 'timeMultiplier', 0, 50).name('time multiplier')
 gui.add({ clear }, 'clear')
-gui.add({ seed }, 'seed')
+gui.add({ seedCircle }, 'seedCircle').name('seed circle')
+gui.add({ seedCenter }, 'seedCenter').name('seed center')
 gui.add({ save }, 'save')
 
 const scene = new Scene(document.body.clientWidth, document.body.clientHeight)
@@ -92,22 +93,39 @@ function clear() {
   })
 }
 
-function seed() {
-  const seeds = []
-  for (let i = 0; i < 10; i++) {
-    const a = (i * 2 * Math.PI) / 10
-    seeds.push(0.5 + 0.25 * Math.cos(a), 0.5 + 0.25 * Math.sin(a))
-  }
-
+function iterate(config) {
   const input = lastOutput
   const output = input === bufferA ? bufferB : bufferA
   lastOutput = output
 
   scene.draw({
-    program: shaders.seed,
-    uniforms: { seeds },
     inputs: { texture: input },
-    output: output
+    output: output,
+    ...config
+  })
+}
+
+function seedCenter() {
+  const seeds = [0.5, 0.5]
+  iterate({
+    program: shaders.seed,
+    uniforms: { seeds, num: 1 }
+  })
+}
+
+function seedCircle() {
+  const seeds = []
+  const num = 10
+  for (let i = 0; i < num; i++) {
+    const a = (i * 2 * Math.PI) / num
+    const x = 0.5 + 0.25 * Math.cos(a)
+    const y = 0.5 + 0.25 * Math.sin(a) * (w / h)
+    seeds.push(x, y)
+  }
+
+  iterate({
+    program: shaders.seed,
+    uniforms: { seeds, num }
   })
 }
 
@@ -116,15 +134,9 @@ function render() {
   const kill = settings.kill / 1000
 
   for (let i = 0; i < settings.renderSteps; i++) {
-    const input = lastOutput
-    const output = input === bufferA ? bufferB : bufferA
-    lastOutput = output
-
-    scene.draw({
+    iterate({
       program: shaders.react,
-      uniforms: { ...settings, feed, kill, mouse },
-      inputs: { texture: input },
-      output: output
+      uniforms: { ...settings, feed, kill, mouse }
     })
   }
 
@@ -139,5 +151,5 @@ function render() {
 }
 
 clear()
-seed()
+seedCircle()
 render()
