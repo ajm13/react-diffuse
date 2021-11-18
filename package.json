@@ -7,9 +7,9 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "dat.gui": "^0.7.3",
-    "file-saver": "^2.0.2",
-    "twgl.js": "^4.5.2"
+    "dat.gui": "^0.7.7",
+    "file-saver": "^2.0.5",
+    "twgl.js": "^4.21.2"
   },
   "devDependencies": {
     "@parcel/transformer-glsl": "^2.0.1",

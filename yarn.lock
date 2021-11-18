@@ -1697,7 +1697,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dat.gui@^0.7.3:
+dat.gui@^0.7.7:
   version "0.7.7"
   resolved "https://registry.yarnpkg.com/dat.gui/-/dat.gui-0.7.7.tgz#7f96dbd21621a76385203659aebfa264ee6ae89b"
   integrity sha512-sRl/28gF/XRC5ywC9I4zriATTsQcpSsRG7seXCPnTkK8/EQMIbCu5NPMpICLGxX9ZEUvcXR3ArLYCtgreFoMDw==
@@ -2092,7 +2092,7 @@ fault@^1.0.0:
   dependencies:
     format "^0.2.0"
 
-file-saver@^2.0.2:
+file-saver@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
   integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
@@ -4457,7 +4457,7 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-twgl.js@^4.5.2:
+twgl.js@^4.21.2:
   version "4.21.2"
   resolved "https://registry.yarnpkg.com/twgl.js/-/twgl.js-4.21.2.tgz#11bc3e90802d78775d67bad718e9623da8562fcf"
   integrity sha512-VY7FEbmaXwsfHLCGYBpvlOClSZWlTPyv2d8dc/Yt7IJMiNOOBMBl+t0xLIrzO/e1fH6Co1Dd7xdvSIoq07oDfQ==
