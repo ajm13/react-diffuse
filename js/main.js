@@ -21,8 +21,8 @@ window.gpuHackCtx = gpuHack.getContext('webgl', {
 })
 
 let settings = {
-  feed: 0.037,
-  kill: 0.06,
+  feed: 37,
+  kill: 60,
   brushSize: 1,
   threshold: 0.3,
   timeMultiplier: 0,
@@ -112,6 +112,9 @@ function seed() {
 }
 
 function render() {
+  const feed = settings.feed / 1000
+  const kill = settings.kill / 1000
+
   for (let i = 0; i < settings.renderSteps; i++) {
     const input = lastOutput
     const output = input === bufferA ? bufferB : bufferA
@@ -119,7 +122,7 @@ function render() {
 
     scene.draw({
       program: shaders.react,
-      uniforms: { ...settings, mouse },
+      uniforms: { ...settings, feed, kill, mouse },
       inputs: { texture: input },
       output: output
     })

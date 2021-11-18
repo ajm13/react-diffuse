@@ -4,131 +4,137 @@
     "Default": {},
     "Coral": {
       "0": {
-        "feed": 0.055,
-        "kill": 0.062
+        "feed": 55,
+        "kill": 62
       }
     },
     "Dots": {
       "0": {
-        "feed": 0.03,
-        "kill": 0.062
+        "feed": 30,
+        "kill": 62
       }
     },
     "Fireflies": {
       "0": {
-        "feed": 0.007,
-        "kill": 0.047
+        "feed": 7,
+        "kill": 47
       }
     },
     "Gliders": {
       "0": {
-        "feed": 0.001,
-        "kill": 0.037
+        "feed": 1,
+        "kill": 37
       }
     },
     "Holes": {
       "0": {
-        "feed": 0.039,
-        "kill": 0.058
+        "feed": 39,
+        "kill": 58
       }
     },
     "Hypnosis": {
       "0": {
-        "feed": 0.02,
-        "kill": 0.045
+        "feed": 20,
+        "kill": 45
       }
     },
     "Mercury": {
       "0": {
-        "feed": 0.026,
-        "kill": 0.05
+        "feed": 26,
+        "kill": 50
       }
     },
     "Raindrops": {
       "0": {
-        "feed": 0.012,
-        "kill": 0.048
+        "feed": 12,
+        "kill": 48
       }
     },
     "Raindrops 2": {
       "0": {
-        "feed": 0.012,
-        "kill": 0.053
+        "feed": 12,
+        "kill": 53
       }
     },
     "Raindrops 3": {
       "0": {
-        "feed": 0.018,
-        "kill": 0.053
+        "feed": 18,
+        "kill": 53
       }
     },
     "Shimmer": {
       "0": {
-        "feed": 0.023,
-        "kill": 0.051
+        "feed": 23,
+        "kill": 51
       }
     },
     "Spirals": {
       "0": {
-        "feed": 0.011,
-        "kill": 0.041
+        "feed": 11,
+        "kill": 41
       }
     },
     "Spirals 2": {
       "0": {
-        "feed": 0.007,
-        "kill": 0.043
+        "feed": 7,
+        "kill": 43
+      }
+    },
+    "Spirals 3": {
+      "0": {
+        "feed": 5,
+        "kill": 25
       }
     },
     "Trippy 1": {
       "0": {
-        "feed": 0.02,
-        "kill": 0.05,
+        "feed": 20,
+        "kill": 50,
         "renderer": "psychedelic"
       }
     },
     "Trippy 2": {
       "0": {
-        "feed": 0.015,
-        "kill": 0.041,
+        "feed": 15,
+        "kill": 41,
         "renderer": "psychedelic"
       }
     },
     "Trippy 3": {
       "0": {
-        "feed": 0.025,
-        "kill": 0.051,
+        "feed": 25,
+        "kill": 51,
         "renderer": "psychedelic"
       }
     },
     "Trippy 4": {
       "0": {
-        "feed": 0.034,
-        "kill": 0.056,
+        "feed": 34,
+        "kill": 56,
         "renderer": "threshold",
         "threshold": 0.4
       }
     },
     "Trippy 5": {
       "0": {
-        "feed": 0.034,
-        "kill": 0.0553,
+        "feed": 34,
+        "kill": 55,
         "renderer": "threshold",
         "threshold": 0.4
       }
     },
     "Trippy 6": {
       "0": {
-        "feed": 0.016,
-        "kill": 0.042,
+        "feed": 16,
+        "kill": 42,
         "renderer": "threshold",
         "threshold": 0.4
       }
     },
     "Vines": {
       "0": {
-        "feed": 0.039,
-        "kill": 0.063
+        "feed": 39,
+        "kill": 63
       }
     }
   }
